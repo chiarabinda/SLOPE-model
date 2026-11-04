@@ -13,4 +13,9 @@ Le coordinate del sistema di riferimento classico vengono sostituite con coordin
   <img src="docs/upslope.jpg" alt="(b)" width="45%">
   <br>
   <em>Profili di vento downslope e upslope nel sistema di riferimento del pendio. La coordinata n perpendicolare alla slope (HEIGHT) e la coordinata s, non rappresentata, parallela.</em>
-</p>qa              
+</p>
+
+
+## Bibliografia
+
+1. Whiteman, C. D. & Dreiseitl, E. (June 1, 1984). *Alpine meteorology: translations of classic contributions by A. Wagner, E. Ekhart, and F. Defant*. ASCOT-84-3. (https://digital.library.unt.edu/ark:/67531/metadc1181432/)
