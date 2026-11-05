@@ -2,26 +2,27 @@ import pandas as pd
 import os
 import numpy as np
 
-def lettura(path : str,
-            sep : str = "\t", 
-            colonne : tuple = ("n","u")
-            ) -> pd.DataFrame:
-    """
-    Genera un dataframe a partire dalla lettura di un file txt avente due colonne.
+U_M = 6  # valore massimo plausibile di u (m/s)
 
-    Parametri
+def lettura(path : str,
+            sep : str = "\t",
+            ) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Genera due array 1D, corrispondenti a n ed u, a partire dalla lettura di un file txt avente due colonne.
+
+    Parameters
     ----------
     path : str
         Percorso del file. 
     sep : str, default=tab
         Separatore campi. 
-    colonne : tuple, default=("n","u")
-        Tupla che contiene i nomi da assegnare alle colonne.
 
-    Return
-    ------
-    df : DataFrame 
-        Dataframe contenente due colonne, la prima corrispondente alla quota n (m) e la seconda corrispondente alla velocità u (m/s).
+    Returns
+    -------
+    n : numpy.ndarray
+        Quota a cui vengono effettuate le misure di u (m), array 1D di lunghezza N.
+    u : numpy.ndarray
+        Velocità del vento (m/s), array 1D di lunghezza N.
 
     Raises
     ------
@@ -33,9 +34,7 @@ def lettura(path : str,
         Se il file letto contiene dei NaN.
         Se il file letto ha più di due colonne.
         Se il file letto contiene dei numeri negativi.
-        Se il file letto ha le colonne invertite. Possibile
-        ricavarlo tramite la condizione: seconda colonna deve 
-        essere u (valori < 6): se ci sono valori > 6, è n
+        Se il file letto ha le colonne invertite. Possibile ricavarlo tramite la condizione per cui la seconda colonna deve essere u < 6: se ci sono valori > 6, è n
     """
    
     if not os.path.isfile(path):
@@ -44,60 +43,63 @@ def lettura(path : str,
     if os.path.getsize(path) == 0:
         raise ValueError(f"Il file '{path}' è vuoto.")
     
-    df = pd.read_csv(path, sep=sep, dtype=float, header=None)
+    dati = pd.read_csv(path, sep=sep, dtype=float, header=None)
     
-    if df.isna().any():
+    if dati.isna().any(axis=None):
         raise ValueError(f"Il file '{path}' contiene valori mancanti (NaN).")
     
-    if df.shape[1] != 2:
+    if dati.shape[1] != 2:
         raise ValueError(
-            f"Il file '{path}' ha {df.shape[1]} colonne, ne sono ammesse al massimo 2."
+            f"Il file '{path}' ha {dati.shape[1]} colonne, ne sono ammesse 2."
         )
     
-    if (df < 0).any(axis=None):
+    if (dati < 0).any(axis=None):
         raise ValueError(f"Il file '{path}' contiene valori negativi.")
 
-    if (df.iloc[:, 1] > 6).any():
+    if (dati.iloc[:, 1] > U_M).any():
         raise ValueError(
-            f"Il file '{path}': la seconda colonna contiene valori > 6, "
-            "le colonne n e u sembrano invertite."
+            f"Il file '{path}': la seconda colonna contiene valori > {U_M}, le colonne n e u sembrano invertite."
         )
     
-    df.columns = list(colonne)
-    return df
+    n, u = dati.to_numpy().T
+    return n, u
 
-def delta_n(df : pd.DataFrame):
+def delta_n(n: np.ndarray,
+            u : np.ndarray
+            ):
     """
     Calcola il valore di delta (m), lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio, a partire dal valore di n per cui u = u_max.
 
-    Parametri
+    Parameters
     ----------
-    df : DataFrame
-        DataFrame contenente due colonne, la prima corrispondente alla quota n e la seconda alla velocità u.
+    n : numpy.ndarray
+        Quota a cui vengono effettuate le misure di u (m), array 1D di lunghezza N.
+    u : numpy.ndarray
+        Velocità del vento (m/s), array 1D di lunghezza N.
     
-    Return
-    ------
+    Returns
+    -------
     delta : float 
         Lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio (m).
     """    
 
-    n_u_max = df.iloc[df.iloc[:, 1].argmax(), 0] #valore di n che massimizza u
+    n_u_max = n[u.argmax()] #valore di n che massimizza u
     delta = 4 * n_u_max / np.pi
 
     return delta
 
-def thetas(df : pd.DataFrame,
+def thetas(u : np.ndarray,
            theta_0 : float,
            gamma : float,
            pr : float
            ):
     """
-    Calcola il valore dell'anomalia di temperatura sulla superficie del pendio, theta_s (K), a partire dal valore u = u_max della seconda colonna del dataframe.
+    Calcola il valore dell'anomalia di temperatura sulla superficie del pendio, theta_s (K), a partire dal valore u = u_max.
 
-    Parametri
+    Parameters
     ----------
-    df : DataFrame
-        DataFrame contenente due colonne, la prima corrispondente alla quota n e la seconda alla velocità u.
+    u : numpy.ndarray
+        Velocità del vento (m/s), array 1D di lunghezza N.
     theta_0 : float
         Temperatura potenziale di riferimento (K).
     gamma : float
@@ -105,12 +107,12 @@ def thetas(df : pd.DataFrame,
     pr : float
         Numero di Prandtl.            
     
-    Return
-    ------
+    Returns
+    -------
     theta_s : float 
         Misura dell'anomalia di temperatura sulla superficie del pendio, dove n = 0 (K).
     """    
-    u_max = df.iloc[:, 1].max()
+    u_max = u.argmax()
     theta_s = u_max * np.sqrt(2) * np.exp(np.pi / 4) * np.sqrt(theta_0 * gamma * pr / 9.81)
 
     return theta_s
