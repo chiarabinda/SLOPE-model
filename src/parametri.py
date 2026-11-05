@@ -10,7 +10,7 @@ class costanti_classe:
     Classe contentente parametri fisici costanti in un fluido. 
     Il numero di Prandtl esprime il rapporto tra la viscosità cinematica e la diffusività termica di un fluido.
 
-    Parametri
+    Parameters
     ----------
     pr : float
         Numero di Prandtl.
@@ -50,7 +50,7 @@ class CostantiAria(costanti_classe):
     """
     Classe contenente parametri fisici del fluido aria, costanti in quest'ultima.
 
-    Parametri
+    Parameters
     ----------
     pr : float, default = 0.7
         Numero di Prandtl dell'aria.
@@ -76,7 +76,7 @@ class termini_variabili:
     """
     Classe che contiene parametri di sistema specifici del caso studio cosiderato.
 
-    Parametri
+    Parameters
     ----------
     alpha : float
         Angolo di inclinazione della slope (°).
