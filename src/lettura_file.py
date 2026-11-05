@@ -68,7 +68,7 @@ def delta_n(n: np.ndarray,
             u : np.ndarray
             ):
     """
-    Calcola il valore di delta (m), lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio, a partire dal valore di n per cui u = u_max.
+    Calcola il valore di delta (m), lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio, a partire dal valore di n per cui u = u_max. Viene utilizzato il modello di Prandtl
 
     Parameters
     ----------
@@ -81,11 +81,21 @@ def delta_n(n: np.ndarray,
     -------
     delta : float 
         Lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio (m).
+
+    Raises
+    ------
+    ValueError
+        Se il valore massimo di velocità u si ha per quote n minori o uguali a 0.    
     """    
 
     n_u_max = n[u.argmax()] #valore di n che massimizza u
-    delta = 4 * n_u_max / np.pi
 
+    if n_u_max <= 0:
+        raise ValueError(
+        f"Il massimo di u cade a n = {n_u_max} m: delta = 0 non ha significato fisico, controllare i dati.")
+
+    delta = 4 * n_u_max / np.pi
+    
     return delta
 
 def thetas(u : np.ndarray,
@@ -94,7 +104,7 @@ def thetas(u : np.ndarray,
            pr : float
            ):
     """
-    Calcola il valore dell'anomalia di temperatura sulla superficie del pendio, theta_s (K), a partire dal valore u = u_max.
+    Calcola il valore dell'anomalia di temperatura sulla superficie del pendio, theta_s (K), a partire dal valore u = u_max. Deriva dalle formule del modello di Prandtl.
 
     Parameters
     ----------
