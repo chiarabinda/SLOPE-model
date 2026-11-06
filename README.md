@@ -1,7 +1,7 @@
 
-| **Author** | **Project** | 
-|:----------:|:-----------:|
-| **Chiara Bindandi** | **SLOPE-model** | 
+| **Author** | **Project** | **License** | 
+|:----------:|:-----------:|:-----------:|
+| **Chiara Bindandi** | **SLOPE-model** | [![license: GNU/GPLv3](https://img.shields.io/badge/license-GNU/GPLv3-blue)](https://gnu.org) |
 
 # SLOPE-model
 **SLOPE** (**S**lope flow **L**imits of **P**randtl's **E**quilibrium) model è un modello per lo studio dei flussi lungo i pendii (upslope, downslope) basato sulla teoria dei venti di pendio di L. Prandtl. 
