@@ -34,7 +34,7 @@ def lettura(path : str,
         Se il file letto contiene dei NaN.
         Se il file letto ha più di due colonne.
         Se il file letto contiene dei numeri negativi.
-        Se il file letto ha le colonne invertite. Possibile ricavarlo tramite la condizione per cui la seconda colonna deve essere u < 6: se ci sono valori > 6, è n
+        Se il file letto ha le colonne invertite. Possibile ricavarlo tramite la condizione per cui la seconda colonna deve essere u < 6: se ci sono valori > 6, è n.
     """
    
     if not os.path.isfile(path):
@@ -66,7 +66,7 @@ def lettura(path : str,
 
 def delta_n(n: np.ndarray,
             u : np.ndarray
-            ):
+            ) -> float:
     """
     Calcola il valore di delta (m), lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio, a partire dal valore di n per cui u = u_max. Viene utilizzato il modello di Prandtl
 
@@ -102,7 +102,7 @@ def thetas(u : np.ndarray,
            theta_0 : float,
            gamma : float,
            pr : float
-           ):
+           ) -> float:
     """
     Calcola il valore dell'anomalia di temperatura sulla superficie del pendio, theta_s (K), a partire dal valore u = u_max. Deriva dalle formule del modello di Prandtl.
 
