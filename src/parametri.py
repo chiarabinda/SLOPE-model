@@ -1,4 +1,3 @@
-import numpy as np
 from dataclasses import dataclass
 
 PR_MIN_ARIA = 0.65
@@ -37,13 +36,13 @@ class costanti_classe:
             raise TypeError(f"La diffusività termica deve essere decimale, ricevuto {type(self.k).__name__}")
 
         if self.pr <= 0:
-            raise ValueError(f"Il numero di Prandtl deve essere positivo (> 0).")
+            raise ValueError("Il numero di Prandtl deve essere positivo (> 0).")
         
         if self.ni <= 0:
-            raise ValueError(f"La viscosità cinematica deve essere positiva (> 0).")
+            raise ValueError("La viscosità cinematica deve essere positiva (> 0).")
         
         if self.k <= 0:
-            raise ValueError(f"La diffusività termica deve essere positiva (> 0).")
+            raise ValueError("La diffusività termica deve essere positiva (> 0).")
 
 @dataclass        
 class CostantiAria(costanti_classe):
@@ -106,7 +105,7 @@ class termini_variabili:
             raise ValueError(f"L'angolo di inclinazione del pendio deve positivo e essere minore di 90°, ricevuto: {self.alpha}°)")
         
         if self.gamma <= 0:
-            raise ValueError(f"Il gradiente verticale di temperatura potenziale deve essere positivo (> 0).")
+            raise ValueError("Il gradiente verticale di temperatura potenziale deve essere positivo (> 0).")
         
         if self.theta_0 <= 0:
-            raise ValueError(f"La temperatura potenziale deve essere positiva (> 0).")
+            raise ValueError("La temperatura potenziale deve essere positiva (> 0).")
