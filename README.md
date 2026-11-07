@@ -8,6 +8,8 @@
 
 ![Python version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)
 
+</div>
+
 # SLOPE-model
 **SLOPE** (**S**lope flow **L**imits of **P**randtl's **E**quilibrium) model è un modello per lo studio dei flussi lungo i pendii (upslope, downslope) basato sulla teoria dei venti di pendio di L. Prandtl. 
 Si considera una slope inclinata di un angolo α rispetto all’orizzonte e si suppone che al di sopra sia presente una massa d’aria stabile (la temperatura potenziale dell'aria aumenta con l'aumentare dell'altitudine). 
@@ -36,7 +38,7 @@ Verifica del modello di Prandtl sulla base di osservazioni di flussi lungo il pe
 - $\alpha$ = 42.5°
 - $\gamma$ = 0.4 °C /100 m
 - $\theta_0$ = 283 K
-- Pr = $\nu$/$\kappa$ = 0.7
+- Pr = $\frac{\nu}{\kappa}$ = 0.7
 - Profili “verticali” di u(s,n) ricavati da misurazioni effettuate con palloni frenati (s fissato)
 
 ## Installazione
