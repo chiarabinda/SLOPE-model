@@ -20,7 +20,7 @@ def test_lettura_file_nan():
     with pytest.raises(ValueError):
         lettura(DATA_DIR/"NaN.txt")
 
-def test_lettura_file_piùcolonne():
+def test_lettura_file_piucolonne():
     """
     Verifica che un file di testo che contiene più di due 
     colonne generi un errore.
