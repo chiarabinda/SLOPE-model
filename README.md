@@ -19,8 +19,8 @@ Le coordinate del sistema di riferimento classico vengono sostituite con coordin
 
 <!-- start-figures -->
 <p align="center">
-  <img src="docs/downslope.jpg" alt="(a)" width="45%">
-  <img src="docs/upslope.jpg" alt="(b)" width="45%">
+  <img src="docs/immagini/downslope.jpg" alt="(a)" width="45%">
+  <img src="docs/immagini/upslope.jpg" alt="(b)" width="45%">
   <br>
   <em>Profili di vento downslope e upslope nel sistema di riferimento del pendio. La coordinata n perpendicolare alla slope (HEIGHT) e la coordinata s, non rappresentata, parallela.</em>
 </p>
@@ -91,6 +91,7 @@ Test che convalidano la lettura del file, i parametri di sistema e i profili di 
 ```bash
 python -m pytest test/ -v
 ```
+
 ## Documentazione 
 La documentazione può essere trovata al seguente link: [Read the Docs](https://slope-model.readthedocs.io/it/latest/).
 
