@@ -1,13 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from .u_prandtl import u_prandtl_teor, u_pr, delta_prandtl
 
 def plot_profilo(n : np.ndarray,
                  u : np.ndarray,
                  par : tuple,
-                 u_pr : callable,
-                 u_prandtl_teor : callable,
                  theta_s : float,
                  delta : float,
+                 alpha : float,
+                 theta_0 : float,
+                 pr : float,
+                 gamma : float,
                  titolo : str,
                  filename: str = None
                 ) -> plt.Figure:
@@ -22,14 +25,18 @@ def plot_profilo(n : np.ndarray,
         Velocità del vento (m/s), array 1D di lunghezza N.
     par : float
         Parametri ottimali del fit, es. theta_s e ni.
-    u_pr : callable
-        Funzione che genera il profilo di velocità di cui fare il fit.
-    u_prandtl_teor : callable
-        Funzione che genera il profilo di velocità basato sul modello teorico.
     theta_s : float
         Misura dell'anomalia di temperatura sulla superficie del pendio, dove n = 0 (K).
     delta : float
         Lunghezza di scala corrispondente allo spessore dello strato in cui si sviluppa il vento di pendio (m).  
+    alpha : float
+        Angolo di inclinazione del pendio (°).
+    theta_0 : float
+        Temperatura potenziale di riferimento (K).
+    pr : float
+        Numero di Prandtl.
+    gamma : float
+        Gradiente verticale di temperatura potenziale (K/m).
     titolo : str
         Titolo del grafico.
     filename : str, optional
@@ -37,13 +44,15 @@ def plot_profilo(n : np.ndarray,
 
     """
     n_ax = np.linspace(0,130,261)
-    u_fit = u_pr(n_ax, par[0], par[1])
-    u_teor = u_prandtl_teor(n_ax, theta_s, delta)
+    
+    delta_fit = delta_prandtl(alpha, theta_0, par[1], pr, gamma)
+    u_fit = u_pr(n_ax, par[0], theta_0, pr, gamma, delta_fit)
+    u_teor = u_prandtl_teor(n_ax, theta_s, pr, theta_0, gamma, delta)
 
     fig, ax = plt.subplots()
     ax.plot(u_fit, n_ax, label="fit")
-    ax.plot(u, n, label="real")
-    ax.plot(u_teor, n_ax, label="model")
+    ax.plot(u, n, label="dati osservati")
+    ax.plot(u_teor, n_ax, label="modello")
 
     ax.legend()
     ax.set_xlabel("u [m/s]")
