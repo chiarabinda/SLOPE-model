@@ -1,0 +1,2 @@
+# Teoria
+Per una trattazione completa della teoria del modello di Prandtl si rimanda al paper di riferimento, a partire dalla pagina 105: [Whiteman & Dreiseitl (1984), *Alpine meteorology*](https://digital.library.unt.edu/ark:/67531/metadc1181432/).
