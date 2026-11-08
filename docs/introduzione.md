@@ -3,7 +3,7 @@
 :end-before: <!-- start-figures -->
 ```
 
-```{figure} downslope.jpg
+```{figure} Immagini/downslope.jpg
 :alt: Profilo di vento downslope
 :width: 40%
 :align: center
@@ -11,7 +11,7 @@
 Profilo di vento downslope nel sistema di riferimento del pendio. La coordinata $n$ è perpendicolare alla slope (HEIGHT), mentre la coordinata $s$, non rappresentata, è parallela.
 ```
 
-```{figure} upslope.jpg
+```{figure} Immagini/upslope.jpg
 :alt: Profilo di vento upslope
 :width: 40%
 :align: center
