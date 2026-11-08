@@ -10,17 +10,21 @@
 
 </div>
 
+<!-- start-docs -->
+
 # SLOPE-model
 **SLOPE** (**S**lope flow **L**imits of **P**randtl's **E**quilibrium) model è un modello per lo studio dei flussi lungo i pendii (upslope, downslope) basato sulla teoria dei venti di pendio di L. Prandtl. 
 Si considera una slope inclinata di un angolo α rispetto all’orizzonte e si suppone che al di sopra sia presente una massa d’aria stabile (la temperatura potenziale dell'aria aumenta con l'aumentare dell'altitudine). 
 Le coordinate del sistema di riferimento classico vengono sostituite con coordinate più appropriate allo studio, la coordinata s parallela alla pendenza e la coordinata n normale al pendio.
 
+<!-- start-figures -->
 <p align="center">
   <img src="docs/downslope.jpg" alt="(a)" width="45%">
   <img src="docs/upslope.jpg" alt="(b)" width="45%">
   <br>
   <em>Profili di vento downslope e upslope nel sistema di riferimento del pendio. La coordinata n perpendicolare alla slope (HEIGHT) e la coordinata s, non rappresentata, parallela.</em>
 </p>
+<!-- end-figures -->
 
 ## Contenuti
 
@@ -28,7 +32,7 @@ Le coordinate del sistema di riferimento classico vengono sostituite con coordin
 * [Installazione](#installazione)
 * [Quickstart](#quickstart)
 * [Testing](#testing)
-* [Documentation](#documentation)
+* [Documentation](#documentazione)
 * [Licenza](#licenza)
 * [Bibliografia](#bibliografia)
 
@@ -43,25 +47,25 @@ Verifica del modello di Prandtl sulla base di osservazioni di flussi lungo il pe
 
 ## Installazione
 
-SLOPE-model requires **Python >= 3.10**.
+SLOPE-model richiede **Python >= 3.10**.
 
-1. Clone repository
+1. Clonare repository
 ```bash
 git clone https://github.com/chiarabinda/SLOPE-model.git
 cd SLOPE-model
 ```
-2. Create and activate a virtual environment (recommended)
+2. Creare e attivare un ambiente virtuale (raccomandato)
 ```bash
-conda create -n SLOPE-model python=3.12
+conda create -n SLOPE-model python=3.11
 conda activate SLOPE-model
 ```
 
-3. Install dependencies and the package
+3. Installare dipendenze e pacchetto
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-4. Then choose the installation mode:
+4. Scegliere metodo di installazione:
 * Standard Installation (User Mode):
 ```bash
 python -m pip install .
@@ -75,8 +79,10 @@ python -m pip install -e ".[dev]"
 
 **Command-Line Interface (CLI)**
 
-Simulazioni e salvataggio plot tramite `main.py`:
-
+Simulazione e salvataggio plot tramite:
+```bash
+python main.py
+```
 
 ## Testing
 
@@ -85,6 +91,10 @@ Test che convalidano la lettura del file, i parametri di sistema e i profili di 
 ```bash
 python -m pytest test/ -v
 ```
+## Documentazione 
+La documentazione può essere trovata al seguente link: [Read the Docs](https://slope-model.readthedocs.io/it/latest/).
+
+<!-- end-docs -->
 
 ## Licenza
 
