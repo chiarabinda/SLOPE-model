@@ -32,7 +32,7 @@ Le coordinate del sistema di riferimento classico vengono sostituite con coordin
 * [Installazione](#installazione)
 * [Quickstart](#quickstart)
 * [Testing](#testing)
-* [Documentation](#documentazione)
+* [Documentazione](#documentazione)
 * [Licenza](#licenza)
 * [Bibliografia](#bibliografia)
 
@@ -77,12 +77,20 @@ python -m pip install -e ".[dev]"
 
 ## Quickstart
 
+All'interno della cartella `input_file/` si trovano due file, uno per il vento downslope e l'altro per il vento upslope, contenenti i dati da utilizzare in input. 
+
 **Command-Line Interface (CLI)**
 
-Simulazione e salvataggio plot tramite:
+Simulazione e salvataggio plot tramite `main.py`:
 ```bash
-python main.py
+# Simulazione 
+python main.py input_file/DownslopeDefant.txt --alpha 42.5 --gamma 0.004 --theta0 283.0
+
+# Simulazione con titolo del plot e nome scelti
+python main.py input_file/DownslopeDefant.txt --alpha 42.5 --gamma 0.004 --theta0 283.0 --titolo "Profilo verticale di velocità per downslope" --nome downslope
 ```
+
+Il file in cui vengono salvati i valori del fit e il plot vengono salvati automaticamente nella cartella `output/`.
 
 ## Testing
 
