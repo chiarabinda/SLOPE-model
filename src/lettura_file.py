@@ -122,7 +122,7 @@ def thetas(u : np.ndarray,
     theta_s : float 
         Misura dell'anomalia di temperatura sulla superficie del pendio, dove n = 0 (K).
     """    
-    u_max = u.argmax()
+    u_max = u.max()
     theta_s = u_max * np.sqrt(2) * np.exp(np.pi / 4) * np.sqrt(theta_0 * gamma * pr / 9.81)
 
     return theta_s
