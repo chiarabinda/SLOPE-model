@@ -1,8 +1,8 @@
 <div align="center">
 
-| **Author** | **Project** | **Code Quality** | **License** | 
-|:----------:|:-----------:|:-----------:|:-----------:|
-| **Chiara Bindandi** | **SLOPE-model** |  | [![license: GNU/GPLv3](https://img.shields.io/badge/license-GNU/GPLv3-blue)](https://gnu.org) |
+| **Author** | **Project** | **Documentation** | **Code Quality** | **License** | 
+|:----------:|:-----------:|:-----------------:|:----------------:|:-----------:|
+| **Chiara Bindandi** | **SLOPE-model** | [![Documentation Status](https://readthedocs.org/projects/slope-model/badge/?version=latest)](https://slope-model.readthedocs.io/it/latest/) | [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e74664086a5f46f58380f4279ca8693e)](https://app.codacy.com/gh/chiarabinda/SLOPE-model/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) | [![license: GNU/GPLv3](https://img.shields.io/badge/license-GNU/GPLv3-blue)](https://gnu.org) |
 
 <br/>
 
