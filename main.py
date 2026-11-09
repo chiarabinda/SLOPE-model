@@ -8,7 +8,7 @@ from scipy.optimize import curve_fit
 from src.lettura_file import lettura, delta_n, thetas
 from src.parametri import CostantiAria, termini_variabili
 from src.u_prandtl import u_pr, delta_prandtl
-from src.plot import plot_profilo
+from src.plot import plot_profilo, plot_sens_slope
 
 CARTELLA_OUTPUT_DEFAULT = Path(__file__).resolve().parent / "output"
 TITOLO_DEFAULT = "Profilo di velocità del vento di pendio"
@@ -133,12 +133,17 @@ def main():
         f.write("\n".join(righe) + "\n")
     print(f"Risultati salvati in '{percorso_txt}'.")
 
-    # Plot (theta_s ha segno invertito così da avere u positivo)
+    # Plot profili verticali (theta_s ha segno invertito così da avere u positivo)
     plot_profilo(n, u, par, -theta_s_dati, delta_dati,
                  alpha, theta_0, pr, gamma,
                  titolo=args.titolo,
                  filename=str(percorso_plot))
     print(f"Grafico salvato in '{percorso_plot}'.")
+
+    # Plot sensibilità di u rispetto all'inclinazione della slope
+    percorso_sens = args.output_dir / f"{percorso_plot.stem}_sens_slope.png"
+    plot_sens_slope(n, par, alpha, theta_0, pr, gamma, filename=str(percorso_sens))
+    print(f"Grafico di sensibilità salvato in '{percorso_sens}'.")
 
 
 if __name__ == "__main__":
