@@ -38,12 +38,16 @@ Le coordinate del sistema di riferimento classico vengono sostituite con coordin
 
 ## Caratteristiche
 
-Verifica del modello di Prandtl sulla base di osservazioni di flussi lungo il pendio, a partire da misurazioni effettuate sulla Nordkette (nei pressi di Innsbruck, Austria)
-- $\alpha$ = 42.5°
-- $\gamma$ = 0.4 °C /100 m
-- $\theta_0$ = 283 K
-- Pr = $\frac{\nu}{\kappa}$ = 0.7
+1. Verifica del modello di Prandtl sulla base di osservazioni di flussi lungo il pendio, a partire da misurazioni effettuate sulla Nordkette (nei pressi di Innsbruck, Austria). Le caratteristiche del caso studio sono: 
+- Inclinazione del pendio $\alpha$ = 42.5°
+- Gradiente verticale di temperatura potenziale $\gamma$ = 0.4 °C /100 m
+- Temperatura potenziale $\theta_0$ = 283 K
+- Numero di Prandtl Pr = $\frac{\nu}{\kappa}$ = 0.7
 - Profili “verticali” di u(s,n) ricavati da misurazioni effettuate con palloni frenati (s fissato)
+
+In output si ottiene un plot che mette a confronto i profili verticali di velocità del vento (downslope o upslope) dei dati da pallone frenato, del modello teorico e del fit eseguito a partire dai precedenti. 
+
+2.  Test di sensibilità sulla soluzione del modello di Prandtl: profilo di velocità verticale u(n) rispetto all'inclinazione del pendio e rispettivi valori di lunghezza di scala, al di sopra della quale la velocità decresce. 
 
 ## Installazione
 
@@ -83,10 +87,10 @@ All'interno della cartella `input_file/` si trovano due file, uno per il vento d
 
 Simulazione e salvataggio plot tramite `main.py`:
 ```bash
-# Simulazione 
+# Simulazione con titolo del plot e nomi di default 
 python main.py input_file/DownslopeDefant.txt --alpha 42.5 --gamma 0.004 --theta0 283.0
 
-# Simulazione con titolo del plot e nome scelti
+# Simulazione con titolo del plot e nomi scelti
 python main.py input_file/DownslopeDefant.txt --alpha 42.5 --gamma 0.004 --theta0 283.0 --titolo "Profilo verticale di velocità per downslope" --nome downslope
 ```
 
